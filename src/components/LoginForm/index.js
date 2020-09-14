@@ -16,8 +16,7 @@ const LoginForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const body = { identifier: data.username, password: data.password };
-    const requestURL =
-      process.env.API_URL || "http://localhost:1337/auth/local";
+    const requestURL = `${process.env.API_URL}/auth/local` || "https://devuniverse-strapi.herokuapp.com/auth/local";
 
     request(requestURL, { method: "POST", body: body })
       .then((response) => {
@@ -63,10 +62,7 @@ const LoginForm = () => {
             />
           </div>
           <div className="d-flex mt-5">
-            <button
-              onClick={handleOnSubmit}
-              className="btn btn-primary px-5 mx-auto"
-            >
+            <button onClick={handleOnSubmit} className="btn btn-primary px-5 mx-auto">
               Login
             </button>
           </div>
